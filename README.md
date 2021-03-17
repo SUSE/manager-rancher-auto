@@ -1,6 +1,7 @@
 - [SUSE Manager + Rancher + K3s/RKE Automation](#suse-manager--rancher--k3srke-automation)
   - [Setup SUSE Manager Server](#setup-suse-manager-server)
     - [Create Activation keys](#create-activation-keys)
+    - [Create a Group](#create-a-group)
   - [Setup OS Image Build Host](#setup-os-image-build-host)
     - [Create OS Image from template](#create-os-image-from-template)
   - [Salt Pillar Creation](#salt-pillar-creation)
@@ -44,19 +45,29 @@ Lets create a few activation keys.
 Navigate to Systems --> Activation Keys  
 ![Activation Keys](/png/activation_key1.png)  
 In this example we will create two activation keys. The keys will be called k3s and k3s-agent.  
-Click + Create Key in the upper right corner  
+Click --> + Create Key in the upper right corner  
 Fill in the values (These can be different than the example below)  
 Description: k3s  
 Key: 1-sle15sp2-k3s  
 Usage: leave blank  
+Child Channels: Select all that apply  
+Add-On System Types: Select Monitoring  (This will apply prometheus system exporter if you have a Prometheus monitoring host, otherwise skip)  
+Click --> Create Activation Key  
+Repeat these steps to create k3s-agent activation key and add agent to the Description and Key fields.  
 
-
-
+### Create a Group
+Use any name you like for the group.  
+Follow the [SUSE Manager Documentation to Create a Group](https://documentation.suse.com/external-tree/en-us/suma/4.1/suse-manager/client-configuration/system-groups.html)  
 ## Setup OS Image Build Host
 This is a separate host from the SUSE Manager server that will be used to primarily build OS images.  
 Once you have a separate host setup for use and activated to SUSE Manager it can be designated in the properties as an OS Image Build Host.
 The configuration and setup of an OS Build Host is best described in the [Image Building Documentation](https://documentation.suse.com/external-tree/en-us/suma/4.1/suse-manager/administration/image-management.html#at.images.kiwi.buildhost). Once you have this setup we are ready to build a few images for our use case.  
 ### Create OS Image from template
+Your image template needs to be sourced from a git repository.  
+There are some [SUSE Manager templates](https://github.com/SUSE/manager-build-profiles/tree/master/OSImage) made available publicly in github that can be used as a starting point.  
+In order to add your Image Profile to SUSE Manager you need to navigate to Images --> Profiles  
+![Image Profiles](/png/Image_Profiles1.png)  
+There are some examples in this git repository for a starting point. 
 
 ## Salt Pillar Creation  
 

@@ -1,0 +1,8 @@
+<!-- set wicked to use plain mac address for computing DHCP DUID (bsc#1173268)-->
+<config>
+  <addrconf>
+    <dhcp6>
+      <default-duid><ll/></default-duid>
+    </dhcp6>
+  </addrconf>
+</config>
