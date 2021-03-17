@@ -24,7 +24,7 @@ There is great value in the use of this method for deployment and here is a list
 - Full configuration management functionality with Salt.  
 
 Requirements for setup and use:   
-Follow each section in full to get yourself into a workign state.   
+Follow each section in full to get yourself into a working state.   
 - Setup SUSE Manager Server
 - Setup SLE Build Host
 - Salt Pillar
@@ -39,6 +39,18 @@ Installing SUSE Manager for testing can be done fairly quickly if you have avail
 For a quick installation and instruction on how to get up and running please reference the [SUSE Manager Documentation](https://documentation.suse.com/external-tree/en-us/suma/4.1/suse-manager/installation/install-server-unified.html).  
 The remaining instructions can also be used with Uyuni as well. If you would prefer to test with Uyuni then you can reference the [Uyuni documentation](https://www.uyuni-project.org/uyuni-docs/uyuni/installation/install-overview.html).  
 ### Create Activation keys
+Activation keys are used to ensure that your deployed images have correct software entitlements, software channels, subscribed to any relevant groups, and configuration channels applied. More is explained in the [SUSE Manager Documentation on Activation Keys](https://documentation.suse.com/external-tree/en-us/suma/4.1/suse-manager/client-configuration/activation-keys.html).  
+Lets create a few activation keys.  
+Navigate to Systems --> Activation Keys  
+![Activation Keys](/png/activation_key1.png)  
+In this example we will create two activation keys. The keys will be called k3s and k3s-agent.  
+Click + Create Key in the upper right corner  
+Fill in the values (These can be different than the example below)  
+Description: k3s  
+Key: 1-sle15sp2-k3s  
+Usage: leave blank  
+
+
 
 ## Setup OS Image Build Host
 This is a separate host from the SUSE Manager server that will be used to primarily build OS images.  
