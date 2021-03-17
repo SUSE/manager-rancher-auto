@@ -71,7 +71,7 @@ In order to add your Image Profile to SUSE Manager you need to navigate to **Ima
 ![Image Profiles](/png/Image_Profiles1.png)  
    
 **Click --> +Create** in the upper right  
-Fill in the values for each field following the examples below.  
+Fill in the values for each field following the example below.  
 >Label: sle15sp2-k3s  
 >Image Type: Kiwi  
 >Target Image Store: This will default to a web publish location on the SUSE Manager Server  
@@ -79,7 +79,17 @@ Fill in the values for each field following the examples below.
 >Activation Key: 1-sle15sp2-k3s (select what you used in the Activation Key creation step)  
 >Custom Info Values: leave blank  
   
-**Click --> +Create**
+**Click --> +Create**  
+  
+Now that we have a profile, Let's build it!  
+Navigate to **Images --> Build**  
+![Image Build](/png/Image_build1.png)  
+  
+Fill in the values for each field by selecting the Image Profile you just created and then selecting your Build Host you have configured.  
+**Click --> Build**  
+This process should take anywhere from 3-10 minutes depending on the resources of your Build Host.  
+Once it is finished you can navigate to **Images --> Image List** in order to view it and manage it. From here your able to rebuild an image at any time to update it with recent patches that are available.  
+![Image List](png/Image_List1.png)  
 
 ## Salt Pillar Creation  
 
