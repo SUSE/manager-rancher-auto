@@ -92,6 +92,8 @@ Once it is finished you can navigate to **Images --> Image List** in order to vi
 ![Image List](png/Image_List1.png)  
 
 ## Salt Pillar Creation  
+The pillar data in this repository located in /salt/pillar/ is used to create the K3s pillar data on the SUSE Manager Server so that the salt states will have the right values when they execute.  
+
 
 ## Configuration Channels Setup
 
