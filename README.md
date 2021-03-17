@@ -42,17 +42,19 @@ The remaining instructions can also be used with Uyuni as well. If you would pre
 ### Create Activation keys
 Activation keys are used to ensure that your deployed images have correct software entitlements, software channels, subscribed to any relevant groups, and configuration channels applied. More is explained in the [SUSE Manager Documentation on Activation Keys](https://documentation.suse.com/external-tree/en-us/suma/4.1/suse-manager/client-configuration/activation-keys.html).  
 Lets create a few activation keys.  
-Navigate to Systems --> Activation Keys  
+Navigate to **Systems --> Activation Keys**  
 ![Activation Keys](/png/activation_key1.png)  
 In this example we will create two activation keys. The keys will be called k3s and k3s-agent.  
-Click --> + Create Key in the upper right corner  
+**Click --> + Create Key** in the upper right corner  
 Fill in the values (These can be different than the example below)  
-Description: k3s  
-Key: 1-sle15sp2-k3s  
-Usage: leave blank  
-Child Channels: Select all that apply  
-Add-On System Types: Select Monitoring  (This will apply prometheus system exporter if you have a Prometheus monitoring host, otherwise skip)  
-Click --> Create Activation Key  
+
+>Description: k3s  
+>Key: 1-sle15sp2-k3s  
+>Usage: leave blank  
+>Child Channels: Select all that apply  
+>Add-On System Types: Select Monitoring  (This will apply prometheus system exporter if you have a Prometheus monitoring host, otherwise skip)  
+
+**Click --> Create Activation Key**  
 Repeat these steps to create k3s-agent activation key and add agent to the Description and Key fields.  
 
 ### Create a Group
@@ -63,11 +65,21 @@ This is a separate host from the SUSE Manager server that will be used to primar
 Once you have a separate host setup for use and activated to SUSE Manager it can be designated in the properties as an OS Image Build Host.
 The configuration and setup of an OS Build Host is best described in the [Image Building Documentation](https://documentation.suse.com/external-tree/en-us/suma/4.1/suse-manager/administration/image-management.html#at.images.kiwi.buildhost). Once you have this setup we are ready to build a few images for our use case.  
 ### Create OS Image from template
-Your image template needs to be sourced from a git repository.  
-There are some [SUSE Manager templates](https://github.com/SUSE/manager-build-profiles/tree/master/OSImage) made available publicly in github that can be used as a starting point.  
-In order to add your Image Profile to SUSE Manager you need to navigate to Images --> Profiles  
+Your image template needs to be sourced from a git repository. SUSE Manager image profiles will source everything from the config.xml to all of the overlay files that go into the image. There are some [SUSE Manager templates](https://github.com/SUSE/manager-build-profiles/tree/master/OSImage) made available publicly in github that can be used as a starting point.  
+Also, in this git repository you will see the OSImages folder with a few profile examples as well.  
+In order to add your Image Profile to SUSE Manager you need to navigate to **Images --> Profiles**  
 ![Image Profiles](/png/Image_Profiles1.png)  
-There are some examples in this git repository for a starting point. 
+   
+**Click --> +Create** in the upper right  
+Fill in the values for each field following the examples below.  
+>Label: sle15sp2-k3s  
+>Image Type: Kiwi  
+>Target Image Store: This will default to a web publish location on the SUSE Manager Server  
+>Config URL: https://github.com/cseader/manager-rancher-auto/tree/main/OSImage/Image-sle15sp2-JeOS (Location of your config.xml, and overlay files)  
+>Activation Key: 1-sle15sp2-k3s (select what you used in the Activation Key creation step)  
+>Custom Info Values: leave blank  
+  
+**Click --> +Create**
 
 ## Salt Pillar Creation  
 
