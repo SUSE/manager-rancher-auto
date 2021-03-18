@@ -109,6 +109,20 @@ k3s:
   cni:
   datastore-endpoint:
 ```
+Once you have stored thse files in /srv/pillar on the SUSE Manager Server then you will need to run a few commands to load the pillar data.  
+Refresh pillar data on SUSE Manager Server:    
+```
+salt '*' saltutil.refresh_pillar
+```
+To print the new k3s pillar data:
+```
+salt 'k3s-1.susedojo.com' pillar.get k3s
+```
+To just grab the token you can also run:
+```
+salt 'k3s-1.susedojo.com' pillar.get k3s:token
+```
+Notice instead of using a wildcard here for the salt command I'm sending the query to the salt master server in my setup. Otherwise every server will print this data because the scope in the first top.sls file is for all hosts to see this pillar data. You could modify that scope in your environment to the hosts that are part of the K3s cluster. You would need to know those systems beforehand.  
 
 
 ## Configuration Channels Setup
