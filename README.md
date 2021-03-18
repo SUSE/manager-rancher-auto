@@ -93,6 +93,22 @@ Once it is finished you can navigate to **Images --> Image List** in order to vi
 
 ## Salt Pillar Creation  
 The pillar data in this repository located in /salt/pillar/ is used to create the K3s pillar data on the SUSE Manager Server so that the salt states will have the right values when they execute.  
+In /salt/pillar/ there is a file called top.sls which gives the name of the pillar and the scope of minions that it applies to, which in this case is a wildcard for all.  
+These files needs to be located in /srv/pillar/ on the SUSE Manager server.  
+```
+  base:  
+    '*':  
+      - k3s  
+```
+Under the /salt/pillar/k3s/ you will see init.sls which holds the pillar data.  
+You should populate "server" value with your k3s master node. The value for token can be whatever you want it to. You can get fancy with a 128 bit token value for example. Here is something for 32 char if you want a random string for your token. `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
+```
+k3s:
+  server: k3s-1.susedojo.com
+  token: K3sdemotokenwithSUMA 
+  cni:
+  datastore-endpoint:
+```
 
 
 ## Configuration Channels Setup
