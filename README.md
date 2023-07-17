@@ -75,7 +75,7 @@ Fill in the values for each field following the example below.
 >Label: sle15sp2-k3s  
 >Image Type: Kiwi  
 >Target Image Store: This will default to a web publish location on the SUSE Manager Server  
->Config URL: https://github.com/cseader/manager-rancher-auto/tree/main/OSImage/Image-sle15sp2-JeOS (Location of your config.xml, and overlay files)  
+>Config URL: https://github.com/SUSE/manager-rancher-auto/tree/main/OSImage/Image-sle15sp2-JeOS (Location of your config.xml, and overlay files)  
 >Activation Key: 1-sle15sp2-k3s (select what you used in the Activation Key creation step)  
 >Custom Info Values: leave blank  
   
